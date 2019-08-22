@@ -35,20 +35,27 @@ yargs.command({
             type: 'string'
         }
     },
-    describe: 'Remove a note',
     handler: (argv)=> notes.removeNote(argv.title)
 })
 
 yargs.command({
     command: 'list',
     describe: 'List your notes',
-    handler: ()=>console.log('List your notes')
+    builder: {},
+    handler: () => notes.listNote()
 })
 
 yargs.command({
     command: 'read',
+    builder: {
+        title: {
+            describe: 'read the note',
+            demandOption: true,
+            type: 'string'
+        }
+    },
     describe: 'Reading a note',
-    handler: ()=>console.log('Reading a note')
+    handler: (argv)=>notes.readNote(argv.title)
 })
 
 yargs.parse()
