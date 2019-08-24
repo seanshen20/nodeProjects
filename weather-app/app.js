@@ -1,5 +1,6 @@
 const geocode = require('./utils/geocode')
 const weather = require('./utils/weather')
+const request = require('request')
 
 const location = process.argv[2]
 if (location) {
@@ -16,6 +17,7 @@ if (location) {
 } else {
     console.log('Input location');
 }
+
 
 // write a promise 
 // const geo = () => {
