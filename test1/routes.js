@@ -2,24 +2,40 @@ routeHandler = (req, res) => {
     const url = req.url
     const method = req.method
     if (url === '/') {
+        res.setHeader('Content-Type', 'text/html')
         res.write(
-            `<h1>Home page</h1>
-            <form action="/create-user" method="POST">
-                <input type="text" name="username">
-                </input>
-                <button type="submit">
-                    submit
-                </button>
-            <form>
-            `
+            `<html>
+                <head>
+                    <title>My first Page</title>
+                </head>
+                <body>
+                    <h1>Home page</h1>
+                    <form action="/create-user" method="POST">
+                        <input type="text" name="username">
+                        </input>
+                        <button type="submit">
+                            submit
+                        </button>
+                    <form>
+                </body>
+            </html>`
+
         )
         return res.end()
     }
     if (url === '/users') {
+        res.setHeader('Content-Type', 'text/html')
         res.write(
             `
-            <h1>Users</h1>
-            <ul><li>User1</li></ul>`
+                    <html>
+                        <head>
+                            <title>User</title>
+                        </head>
+                        <body>
+                            <ul><li>User1</li></ul>
+                        </body>
+                    </html>
+                    `
         )
         return res.end()
     }
@@ -28,6 +44,7 @@ routeHandler = (req, res) => {
         req.on('data', (chunk) => {
             body.push(chunk)
         })
+        
         req.on('end', () => {
             const parsedBody = Buffer.concat(body).toString()
             const input = parsedBody.split('=')[1]
