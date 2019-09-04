@@ -4,8 +4,15 @@ const {viewPath} = require('../util/path')
 
 const products = []
 
+// router.get('/add-product', (req, res, next) => {
+//     res.sendFile(viewPath('add-product.html'))
+// })
+
 router.get('/add-product', (req, res, next) => {
-    res.sendFile(viewPath('add-product.html'))
+    res.render('add-product', {
+        pageTitle: 'Shop',
+        path: '/admin/add-product'
+    })
 })
 
 router.post('/add-product', (req, res, next) => {
