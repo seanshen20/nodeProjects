@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
-const path = require('path')
-const adminData = require('./admin')
+const productController = require('../controller/product')
+
 
 router.get("/favicon.ico", (req, res) => res.sendStatus(204));
 // router.get('/', (req, res, next) => {
@@ -14,13 +14,6 @@ router.get("/favicon.ico", (req, res) => res.sendStatus(204));
 //     res.render('shop', {prods: products, docTitle: 'Shop'})
 // })
 
-router.get('/', (req, res, next) => {
-    const products = adminData.products
-    res.render('shop', {
-        prods: products,
-        pageTitle: 'Shop',
-        path: '/'
-    })
-})
+router.get('/', productController.getProducts)
 
 module.exports = router 

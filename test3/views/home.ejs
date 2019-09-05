@@ -1,0 +1,10 @@
+<%- include('includes/head') %>
+<body>
+    <h1>Home Page</h1>
+    <ul>
+        <% for(let u of users) {%>
+        <li><%=u.user%></li>
+        <%}%>
+    </ul>
+</body>
+</html>
