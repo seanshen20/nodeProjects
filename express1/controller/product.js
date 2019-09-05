@@ -1,7 +1,7 @@
 const Product = require('../models/product')
 
 exports.getAddProduct = (req, res, next) => {
-    res.render('add-product', {
+    res.render('admin/add-product', {
         pageTitle: 'Shop',
         path: '/admin/add-product'
     })
@@ -14,20 +14,9 @@ exports.postAddProduct = (req, res, next) => {
 }
 
 exports.getProducts = async (req, res, next) => {
-    res.render('shop', {
+    res.render('shop/product-list', {
         prods: await Product.fetchAll(),
         pageTitle: 'Shop',
         path: '/'
     })
-
-    // const callback = (product) => {
-    //     res.render('shop', {
-    //         prods: product,
-    //         pageTitle: 'Shop',
-    //         path: '/'
-    //     })
-    // }
-    // Product.fetchAll(callback)
-
-
 }
