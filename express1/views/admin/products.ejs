@@ -22,10 +22,8 @@
                     </p>
                 </div>
                 <div class="card__actions">
-                    <a href="/admin/edit-product" class="btn">Edit <i class="fa fa-edit"></i> </button>
-                    <form action="/admin/delete-product" method="POST">
-                        <button class="btn" type="submit">Delete <i class="fa fa-trash-alt"></i> </button>
-                    </form>
+                    <a href="/admin/edit-product/<%= product.id%>?edit='true'" class="btn">Edit <i class="fa fa-edit"></i> </a>
+                    <%- include('../includes/add-to-cart.ejs', {product})%>
                     
                 </div>
             </article>
