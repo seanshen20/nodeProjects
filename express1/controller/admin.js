@@ -8,15 +8,16 @@ exports.getAddProduct = (req, res, next) => {
 }
 
 exports.postAddProduct = (req, res, next) => {
-    const product = new Product(req.body.title)
+    console.log(req.body)
+    const product = new Product(req.body)
     product.save()
     res.redirect('/admin/add-product')
 }
 
 exports.getProducts = async (req, res, next) => {
-    res.render('shop/product-list', {
+    res.render('admin/products', {
         prods: await Product.fetchAll(),
-        pageTitle: 'Shop',
-        path: '/'
+        pageTitle: 'Admin Products',
+        path: '/admin/products'
     })
 }

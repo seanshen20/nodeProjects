@@ -14,10 +14,14 @@ const getProductsFromFile = async () => {
     return await promise
 }
 module.exports = class Product {
-    constructor(title) {
-        this.title = title
+    constructor(productObject) {
+        this.title = productObject.title
+        this.imageUrl = productObject.imageUrl
+        this.description = productObject.description
+        this.price = productObject.price
     }
     async save() {
+        this.id = Math.random().toString()
         const products = await getProductsFromFile()
         products.push(this)
         fs.writeFile(path, JSON.stringify(products), err => {

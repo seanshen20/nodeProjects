@@ -22,10 +22,11 @@
                     </p>
                 </div>
                 <div class="card__actions">
-                    <a href="/products/<%= product.id%>" class="btn"> Details <i class="fa fa-info-circle"></i></a>
-                    <form action="/add-to-cart" method="POST">
-                        <button class="btn">Add to Cart <i class="fa fa-shopping-cart"></i> </button>
+                    <a href="/admin/edit-product" class="btn">Edit <i class="fa fa-edit"></i> </button>
+                    <form action="/admin/delete-product" method="POST">
+                        <button class="btn" type="submit">Delete <i class="fa fa-trash-alt"></i> </button>
                     </form>
+                    
                 </div>
             </article>
             <%}%>
