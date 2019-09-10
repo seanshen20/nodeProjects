@@ -24,7 +24,7 @@
                 <label for="description">Description</label>
                 <textarea name="description" id="description" rows="5" ><%= (typeof edit !== 'undefined') ? product.description: ''  %> </textarea>
             </div>
-            <% if (edit) {%>
+            <% if (typeof edit !== 'undefined') {%>
                 <input type="hidden" value=<%= product.id %> name="id">
             <% }%>
             <button class="btn" type="submit"><% if (typeof edit !== 'undefined') { %> Update Product <% } else { %> Add Product <% }%></button>

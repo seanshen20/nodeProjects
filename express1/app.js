@@ -4,7 +4,6 @@ const bodyParser = require('body-parser')
 const adminRoutes = require('./routes/admin')
 const shopRoutes = require('./routes/shop')
 const notFoundRoutes = require('./routes/404')
-
 const app = express()
 app.set('view engine', 'ejs')
 app.set('views', 'views')

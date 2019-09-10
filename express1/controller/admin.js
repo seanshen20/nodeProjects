@@ -9,7 +9,7 @@ exports.getAddProduct = (req, res, next) => {
 
 // redundant edit check
 exports.getEditProduct = (req, res, next) => {
-    const editMode = req.query.edit 
+    const editMode = req.query.edit
     if (!editMode) {
         return res.redirect('/')
     }
@@ -28,7 +28,6 @@ exports.getEditProduct = (req, res, next) => {
 
 exports.postEditProduct = (req, res, next) => {
     const product = new Product(req.body)
-    console.log(req.body)
     Product.updateProduct(product)
     res.redirect('/')
 }
@@ -36,8 +35,12 @@ exports.postEditProduct = (req, res, next) => {
 exports.postAddProduct = (req, res, next) => {
     console.log(req.body)
     const product = new Product(req.body)
-    product.save()
-    res.redirect('/admin/add-product')
+    product.save().then(
+        () => res.redirect('/')
+    ).catch(() => {
+        console.log(err)
+    })
+
 }
 
 exports.getProducts = async (req, res, next) => {
@@ -45,5 +48,11 @@ exports.getProducts = async (req, res, next) => {
         prods: await Product.fetchAll(),
         pageTitle: 'Admin Products',
         path: '/admin/products'
+    })
+}
+
+exports.postDeleteProduct = (req, res, next) => {
+    Product.deleteById(req.body.productId, () => {
+        res.redirect('/admin/products')
     })
 }
